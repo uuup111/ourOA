@@ -54,6 +54,7 @@ func SaveNotice(context *gin.Context) {
 	user := system.FindUserById(userId)
 	noticeParam.CreateBy = user.UserName
 	noticeParam.CreateTime = time.Now()
+	noticeParam.UpdateTime = time.Now()
 	result := system.SaveNotice(noticeParam)
 	context.JSON(http.StatusOK, result)
 }

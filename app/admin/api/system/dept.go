@@ -91,6 +91,7 @@ func SaveDept(context *gin.Context) {
 	user := system.FindUserById(userId)
 	deptParam.CreateBy = user.UserName
 	deptParam.CreateTime = time.Now()
+	deptParam.UpdateTime = time.Now()
 	result := system.SaveDept(deptParam)
 	context.JSON(http.StatusOK, result)
 }

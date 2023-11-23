@@ -170,6 +170,7 @@ func SaveRole(context *gin.Context) {
 	user := system.FindUserById(userId)
 	rolesParam.CreateBy = user.UserName
 	rolesParam.CreateTime = time.Now()
+	rolesParam.UpdateTime = time.Now()
 	result := system.SaveRole(rolesParam)
 	context.JSON(http.StatusOK, result)
 }

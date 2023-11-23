@@ -134,6 +134,7 @@ func SavePost(context *gin.Context) {
 	user := system.FindUserById(userId)
 	postParam.CreateBy = user.UserName
 	postParam.CreateTime = time.Now()
+	postParam.UpdateTime = time.Now()
 	result := system.SavePost(postParam)
 	context.JSON(http.StatusOK, result)
 }

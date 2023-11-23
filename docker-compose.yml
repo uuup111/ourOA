@@ -8,4 +8,5 @@ services:
     image: ruoyi-go:1.0.0 # 镜像名称和版本号
     container_name: ruoyi-go # 容器名称
     ports: # 宿主机和容器之间映射端口
-      - "8080:8080"
+      - "8081:8080"
+#      - "8080:8080"

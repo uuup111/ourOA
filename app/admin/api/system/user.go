@@ -685,6 +685,7 @@ func SaveUser(context *gin.Context) {
 	var user1 = system.FindUserById(userId)
 	user.CreateBy = user1.UserName
 	user.CreateTime = time.Now()
+	user.UpdateTime = time.Now()
 	user.Password = pwd
 
 	/*用户名、手机号、邮箱不能重复验证*/
@@ -712,7 +713,7 @@ func UploadUser(context *gin.Context) {
 	var userSql = system.FindUserById(uId)
 
 	var username = userParm.UserName
-	if !system.IsExistUser(username) {
+	if system.IsExistUser(username) {
 		if userSql.UserName != username {
 			context.JSON(http.StatusOK, gin.H{
 				"msg":  "用户名:" + username + "已存在",
@@ -722,7 +723,7 @@ func UploadUser(context *gin.Context) {
 		}
 	}
 	var phonenumber = userParm.Phonenumber
-	if !system.IsExistUserByPhoneNumber(phonenumber) {
+	if system.IsExistUserByPhoneNumber(phonenumber) {
 		if userSql.Phonenumber != phonenumber {
 			context.JSON(http.StatusOK, gin.H{
 				"msg":  "手机号:" + phonenumber + "已存在",
@@ -732,7 +733,7 @@ func UploadUser(context *gin.Context) {
 		}
 	}
 	var email = userParm.Email
-	if !system.IsExistUserByEmail(email) {
+	if system.IsExistUserByEmail(email) {
 		if userSql.Email != email {
 			context.JSON(http.StatusOK, gin.H{
 				"msg":  "邮箱:" + email + "已存在",

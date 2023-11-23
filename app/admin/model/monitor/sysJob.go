@@ -111,6 +111,7 @@ func SaveJob(jobParam SysJobParam, userId interface{}) R.Result {
 	var job SysJob
 	err := copier.Copy(&job, jobParam)
 	job.CreateTime = time.Now()
+	job.UpdateTime = time.Now()
 	user := system.FindUserById(userId)
 	job.CreateBy = user.UserName
 	err = utils.MysqlDb.Model(&SysJob{}).Create(&job).Error

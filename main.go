@@ -32,11 +32,11 @@ func main() {
 
 	//打开浏览器
 	if runtime.GOOS == "windows" {
-		utils.OpenWin("http://127.0.0.1:" + strconv.Itoa(config.Server.Port))
+		utils.OpenWin("http://127.0.0.1:" + strconv.Itoa(config.Server.Port) + "/admin")
 	}
 
 	if runtime.GOOS == "darwin" {
-		utils.OpenMac("http://127.0.0.1:" + strconv.Itoa(config.Server.Port))
+		utils.OpenMac("http://127.0.0.1:" + strconv.Itoa(config.Server.Port) + "/admin")
 	}
 
 	if err := r.Run(":" + strconv.Itoa(config.Server.Port)); err != nil {

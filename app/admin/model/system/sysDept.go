@@ -26,17 +26,18 @@ type SysDept struct {
 }
 
 type SysDeptResult struct {
-	DeptId     int             `json:"deptId" gorm:"column:dept_id;primaryKey"` //表示主键
-	ParentId   int             `json:"parentId" gorm:"parent_id"`
-	Ancestors  string          `json:"ancestors" gorm:"ancestors"`
-	DeptName   string          `json:"deptName" gorm:"dept_name"`
-	OrderNum   int             `json:"orderNum" gorm:"order_num"`
-	Leader     string          `json:"leader" gorm:"leader"`
-	Phone      string          `json:"phone" gorm:"phone"`
-	Email      string          `json:"email" gorm:"email"`
-	Status     string          `json:"status" gorm:"status"`
-	ParentName string          `json:"parentName" gorm:"parent_name"`
-	Children   []SysDeptResult `json:"children"`
+	DeptId    int    `json:"deptId" gorm:"column:dept_id;primaryKey"` //表示主键
+	ParentId  int    `json:"parentId" gorm:"parent_id"`
+	Ancestors string `json:"ancestors" gorm:"ancestors"`
+	DeptName  string `json:"deptName" gorm:"dept_name"`
+	OrderNum  int    `json:"orderNum" gorm:"order_num"`
+	Leader    string `json:"leader" gorm:"leader"`
+	Phone     string `json:"phone" gorm:"phone"`
+	Email     string `json:"email" gorm:"email"`
+	Status    string `json:"status" gorm:"status"`
+	//ParentName string          `json:"parentName" gorm:"parent_name"`
+	//Children   []SysDeptResult `json:"children"`
+	Children   []SysDeptResult `json:"children" gorm:"foreignKey:ParentId;references:DeptId"`
 	CreateBy   string          `json:"createBy" gorm:"create_by"`
 	CreateTime time.Time       `json:"createTime" gorm:"column:create_time;type:datetime"`
 	UpdateBy   string          `json:"updateBy" gorm:"update_by"`

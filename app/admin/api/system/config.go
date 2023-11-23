@@ -145,6 +145,7 @@ func SaveConfig(context *gin.Context) {
 	user := system.FindUserById(userId)
 	configParam.CreateBy = user.UserName
 	configParam.CreateTime = time.Now()
+	configParam.UpdateTime = time.Now()
 	result := system.SaveConfig(configParam)
 	context.JSON(http.StatusOK, result)
 }

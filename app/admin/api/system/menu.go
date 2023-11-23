@@ -125,6 +125,7 @@ func SaveMenu(context *gin.Context) {
 	user := system.FindUserById(userId)
 	menuParm.CreateBy = user.UserName
 	menuParm.CreateTime = time.Now()
+	menuParm.UpdateTime = time.Now()
 	result := system.AddMenu(menuParm)
 	context.JSON(http.StatusOK, result)
 }

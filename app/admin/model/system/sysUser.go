@@ -366,6 +366,7 @@ func ImportUserData(users []SysUserParm, updateSupport string) (string, string) 
 	for i := 0; i < len(users); i++ {
 		var u1 = users[i]
 		u1.CreateTime = time.Now()
+		u1.UpdateTime = time.Now()
 		var userName = u1.UserName
 		var u2 = FindUserByName(userName)
 
